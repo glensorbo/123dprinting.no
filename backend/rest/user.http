@@ -1,0 +1,12 @@
+GET {{host}}/user/65e2032f24eeb88fcd9c0e96
+Authorization: Bearer {{token}}
+
+###
+
+POST {{host}}/user
+Content-Type: application/json
+Authorization: Bearer 
+
+{
+  
+}
