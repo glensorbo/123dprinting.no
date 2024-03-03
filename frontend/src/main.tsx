@@ -8,9 +8,9 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import { store } from './state/index.ts';
 
-import { App } from './App.tsx';
-
 import './index.css';
+import { RouterProvider } from 'react-router-dom';
+import { routes } from './features/routes/routes.tsx';
 
 Moment.globalFormat = 'DD.MM.YYYY';
 
@@ -20,7 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <App />
+        <RouterProvider router={routes} />
       </PersistGate>
     </Provider>
   </React.StrictMode>

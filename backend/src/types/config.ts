@@ -5,4 +5,5 @@ export type Config = {
   SENDGRID_API_KEY: string;
   INIT_USER: string;
   INIT_PWD: string;
+  NODE_ENV: 'development' | 'production';
 };

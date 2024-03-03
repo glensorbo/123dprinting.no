@@ -4,7 +4,7 @@ import type { RootState } from '../index';
 
 export const baseApi = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://apex.glensorbo.com',
+    baseUrl: 'http://localhost:5060',
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).auth.token as string;
 

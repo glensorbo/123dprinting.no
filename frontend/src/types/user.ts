@@ -1,12 +1,20 @@
+import { Order } from './order';
+
 export type User = {
   _id: string;
-  name: string;
+  role: 'admin' | 'customer';
+  firstName: string;
+  lastName: string;
   email: string;
-  // access: Types.ObjectId[];
-  // company?: Types.ObjectId;
-  // team?: Types.ObjectId;
-  // position?: Types.ObjectId;
-  // invitation?: Types.ObjectId;
-  status: string;
-  active: boolean;
+  password: string;
+  address?: {
+    street: string;
+    number: string;
+  };
+  postal?: {
+    code: string;
+    region: string;
+  };
+  phone?: string;
+  orders?: string[] | Order[];
 };

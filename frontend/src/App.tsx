@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { ConfigProvider, Layout } from 'antd';
 
@@ -44,7 +45,9 @@ export const App: React.FC = () => {
               padding: 24,
               minHeight: 280,
             }}
-          ></Content>
+          >
+            <Outlet />
+          </Content>
         </Layout>
       </Layout>
     </ConfigProvider>

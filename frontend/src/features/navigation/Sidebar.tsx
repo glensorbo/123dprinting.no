@@ -1,4 +1,5 @@
 import { Layout, Menu } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 import { UserOutlined } from '@ant-design/icons';
 
@@ -14,6 +15,8 @@ type Props = {
 
 export const Sidebar: React.FC<Props> = (props) => {
   const windowDimensions = useWindowDimensions();
+
+  const navigate = useNavigate();
 
   return (
     <Sider
@@ -42,6 +45,7 @@ export const Sidebar: React.FC<Props> = (props) => {
             label: 'Users',
             key: 'Users',
             icon: <UserOutlined />,
+            onClick: () => navigate('/admin/users'),
           },
         ]}
       />

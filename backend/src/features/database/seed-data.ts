@@ -8,6 +8,7 @@ const initUser = config.INIT_USER;
 const initPwd = config.INIT_PWD;
 
 export const seedData = async () => {
+  if (process.env.NODE_ENV !== 'development') return;
   try {
     let users = await User.find().exec();
 
@@ -34,6 +35,16 @@ export const seedData = async () => {
         email: faker.internet.email(),
         password,
         role: 'customer',
+        address: {
+          street: faker.location.street(),
+          number: faker.number.int(100),
+        },
+        postal: {
+          code: faker.location.zipCode('####'),
+          region: faker.location.county(),
+        },
+        phone: faker.helpers.fromRegExp('[0-9]{8}'),
+        orders: [],
       });
       users.push(user);
     }

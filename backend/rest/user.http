@@ -1,3 +1,8 @@
+GET {{host}}/user
+Authorization: Bearer {{token}}
+
+###
+
 GET {{host}}/user/65e2032f24eeb88fcd9c0e96
 Authorization: Bearer {{token}}
 
