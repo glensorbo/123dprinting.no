@@ -12,7 +12,7 @@ import { HttpException } from './types/http-exception';
 import { config } from './config';
 
 import { AuthRoutes, UserRoutes } from './routes';
-import { connectDB } from './repositories/database';
+import { connectDB } from './features/database/connect-db';
 import { checkAuth } from './middleware/check-auth';
 
 import type { Request, Response, NextFunction } from 'express';

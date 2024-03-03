@@ -1,4 +1,4 @@
-import { Layout, Button, Menu } from 'antd';
+import { Layout, Button } from 'antd';
 
 import {
   MenuFoldOutlined,
@@ -32,6 +32,7 @@ export const HeaderNav: React.FC<Props> = (props) => {
         padding: 0,
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'space-between',
       }}
     >
       <Button
@@ -45,7 +46,7 @@ export const HeaderNav: React.FC<Props> = (props) => {
           color: 'white',
         }}
       />
-      <Menu
+      {/* <Menu
         theme='dark'
         style={{ width: '100%' }}
         mode='horizontal'
@@ -60,7 +61,7 @@ export const HeaderNav: React.FC<Props> = (props) => {
             key: 'Label_2',
           },
         ]}
-      />
+      /> */}
       <Button
         type='text'
         icon={theme === 'light' ? <MoonOutlined /> : <SunOutlined />}

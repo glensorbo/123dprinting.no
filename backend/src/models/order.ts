@@ -1,13 +1,16 @@
 import { Schema, Types, model } from 'mongoose';
+import { Order as OrderType } from '../types/order';
 
-const orderSchema = new Schema(
+const orderSchema = new Schema<OrderType>(
   {
     customer: { type: Types.ObjectId, ref: 'User' },
+    date: { type: String, required: true },
     status: {
       order: { type: String },
       payment: { type: String },
       delivery: { type: String },
     },
+    files: [{ type: String }],
   },
   {
     id: true,
@@ -16,4 +19,4 @@ const orderSchema = new Schema(
   }
 );
 
-export const Order = model('Order', orderSchema);
+export const Order = model<OrderType>('Order', orderSchema);

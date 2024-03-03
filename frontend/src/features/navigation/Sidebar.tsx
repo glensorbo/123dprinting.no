@@ -1,10 +1,10 @@
 import { Layout, Menu } from 'antd';
 
-import { UserOutlined, SafetyOutlined } from '@ant-design/icons';
+import { UserOutlined } from '@ant-design/icons';
 
 import { useWindowDimensions } from '../../hooks/useWindowDimensions';
 
-import logo from '../../assets/logo.svg';
+// import logo from '../../assets/logo.svg';
 
 const { Header, Sider } = Layout;
 
@@ -30,7 +30,7 @@ export const Sidebar: React.FC<Props> = (props) => {
             justifyContent: 'center',
           }}
         >
-          <img src={logo} alt='123dprint.no' style={{ width: '80%' }} />
+          {/* <img src={logo} alt='123dprint.no' style={{ width: '80%' }} /> */}
         </Header>
       </Layout>
       <Menu
@@ -39,28 +39,9 @@ export const Sidebar: React.FC<Props> = (props) => {
         style={{ paddingTop: 24, border: 0 }}
         items={[
           {
-            label: 'Admin',
-            key: 'Admin',
-            icon: <SafetyOutlined />,
-            children: [
-              {
-                label: 'Users',
-                key: 'Users',
-                icon: <UserOutlined />,
-              },
-            ],
-          },
-          {
-            label: 'Equipment',
-            key: 'Equipment',
-            icon: <SafetyOutlined />,
-            children: [
-              {
-                label: 'Trailers',
-                key: 'Trailers',
-                icon: <UserOutlined />,
-              },
-            ],
+            label: 'Users',
+            key: 'Users',
+            icon: <UserOutlined />,
           },
         ]}
       />

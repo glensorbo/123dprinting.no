@@ -1,12 +1,11 @@
 import { useState } from 'react';
-
+import { ToastContainer } from 'react-toastify';
 import { ConfigProvider, Layout } from 'antd';
 
 import { HeaderNav, Sidebar } from './features/navigation';
 
 import { useWindowDimensions } from './hooks/useWindowDimensions';
-import { ExportPlanner } from './features/equipment';
-import { ToastContainer } from 'react-toastify';
+
 import { useStateSelector } from './hooks/useState';
 import { getTheme } from './state/slice/theme';
 import { useThemeConfig } from './hooks/useThemeConfig';
@@ -45,9 +44,7 @@ export const App: React.FC = () => {
               padding: 24,
               minHeight: 280,
             }}
-          >
-            <ExportPlanner />
-          </Content>
+          ></Content>
         </Layout>
       </Layout>
     </ConfigProvider>
