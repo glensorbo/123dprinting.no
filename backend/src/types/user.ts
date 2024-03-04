@@ -1,7 +1,5 @@
 import { Types } from 'mongoose';
 
-import type { Order } from './../types/order';
-
 export type User = {
   _id?: Types.ObjectId;
   role: 'admin' | 'customer';
@@ -18,5 +16,4 @@ export type User = {
     region: string;
   };
   phone?: string;
-  orders?: string[] | Order[];
 };

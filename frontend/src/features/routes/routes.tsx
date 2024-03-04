@@ -1,5 +1,5 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom';
-import { UserTable } from '../users/UserTable';
+import { createBrowserRouter } from 'react-router-dom';
+import { UsersTable } from '../admin/UsersTable';
 import { App } from '../../App';
 
 export const routes = createBrowserRouter([
@@ -8,12 +8,11 @@ export const routes = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: '/admin',
-        // element: <Navigate to={'/admin/users'} replace />,
+        path: 'admin',
         children: [
           {
-            index: true,
-            element: <UserTable />,
+            path: 'users',
+            element: <UsersTable />,
           },
         ],
       },

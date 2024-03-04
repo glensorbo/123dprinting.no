@@ -2,9 +2,9 @@ import { persistReducer } from 'redux-persist';
 import { createSlice } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 
+import type { User } from '../../types/user';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { User } from '../../types/user';
-import { AuthState } from '../../types/auth-state';
+import type { AuthState } from '../../types/auth-state';
 
 export const persistConfig = {
   key: 'auth',
@@ -17,9 +17,17 @@ const initialState: AuthState = {
   user: {
     _id: '',
     email: '',
-    name: '',
-    status: '',
-    active: false,
+    firstName: '',
+    lastName: '',
+    role: 'customer',
+    address: {
+      street: '',
+      number: '',
+    },
+    postal: {
+      code: '',
+      region: '',
+    },
   },
   token: null,
 };
@@ -32,12 +40,11 @@ export const authSlice = createSlice({
       state,
       action: PayloadAction<{
         user: User;
-        access_token: string;
-        userToken: string;
+        token: string;
       }>
     ) => {
       state.user = action.payload.user;
-      state.token = action.payload.access_token;
+      state.token = action.payload.token;
       state.isAuthenticated = true;
     },
     logout: (state) => {

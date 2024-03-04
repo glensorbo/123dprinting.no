@@ -4,16 +4,20 @@ import { baseApi } from './base-api';
 export const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getUsers: builder.query<User[], void>({
-      query: () => '',
+      query: () => '/user',
     }),
-    // login: builder.mutation<LoginResponse, LoginRequest>({
-    //   query: (credentials) => ({
-    //     url: '/auth/login',
-    //     method: 'POST',
-    //     body: credentials,
-    //   }),
-    // }),
+    getUser: builder.query<User, string>({
+      query: (id) => `/user/${id}`,
+    }),
+    createNewUser: builder.mutation<User, User>({
+      query: (user) => ({
+        url: '/user',
+        method: 'POST',
+        body: user,
+      }),
+    }),
   }),
 });
 
-export const { useGetUsersQuery } = userApi;
+export const { useGetUsersQuery, useGetUserQuery, useCreateNewUserMutation } =
+  userApi;

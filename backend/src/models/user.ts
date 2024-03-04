@@ -1,4 +1,4 @@
-import { Schema, Types, model } from 'mongoose';
+import { Schema, model } from 'mongoose';
 import type { User as UserType } from '../types/user';
 
 const userSchema = new Schema<UserType>(
@@ -17,7 +17,6 @@ const userSchema = new Schema<UserType>(
     },
     phone: { type: String },
     password: { type: String, required: true },
-    orders: [{ type: Types.ObjectId, ref: 'Order' }],
   },
   {
     id: true,
