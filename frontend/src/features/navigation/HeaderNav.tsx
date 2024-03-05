@@ -18,12 +18,12 @@ type Props = {
 };
 
 export const HeaderNav: React.FC<Props> = (props) => {
-  const theme = useStateSelector(getTheme);
+  const chosenTheme = useStateSelector(getTheme);
 
   const dispatch = useStateDispatch();
 
   const themeToggleHandler = () => {
-    dispatch(setTheme(theme === 'light' ? 'dark' : 'light'));
+    dispatch(setTheme(chosenTheme === 'light' ? 'dark' : 'light'));
   };
 
   return (
@@ -33,6 +33,8 @@ export const HeaderNav: React.FC<Props> = (props) => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
+        borderBottom: '1px solid',
+        borderColor: 'GrayText',
       }}
     >
       <Button
@@ -46,25 +48,9 @@ export const HeaderNav: React.FC<Props> = (props) => {
           color: 'white',
         }}
       />
-      {/* <Menu
-        theme='dark'
-        style={{ width: '100%' }}
-        mode='horizontal'
-        selectedKeys={['Label_1']}
-        items={[
-          {
-            label: 'Label 1',
-            key: 'Label_1',
-          },
-          {
-            label: 'Label 2',
-            key: 'Label_2',
-          },
-        ]}
-      /> */}
       <Button
         type='text'
-        icon={theme === 'light' ? <MoonOutlined /> : <SunOutlined />}
+        icon={chosenTheme === 'light' ? <MoonOutlined /> : <SunOutlined />}
         style={{
           fontSize: '16px',
           marginRight: '40px',

@@ -1,11 +1,9 @@
-import { Layout, Menu } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import { Layout, Menu, Typography } from 'antd';
+import { Link, useNavigate } from 'react-router-dom';
 
-import { UserOutlined } from '@ant-design/icons';
+import { UserOutlined, HomeOutlined } from '@ant-design/icons';
 
 import { useWindowDimensions } from '../../hooks/useWindowDimensions';
-
-// import logo from '../../assets/logo.svg';
 
 const { Header, Sider } = Layout;
 
@@ -33,7 +31,34 @@ export const Sidebar: React.FC<Props> = (props) => {
             justifyContent: 'center',
           }}
         >
-          {/* <img src={logo} alt='123dprint.no' style={{ width: '80%' }} /> */}
+          {/* <Link
+            to={'/'}
+            style={{
+              height: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Typography.Title
+              style={{
+                fontSize: props.collapsed ? '1rem' : '1.4rem',
+                padding: '0.5rem',
+                margin: 0,
+                backgroundColor: '#EF7C3B',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                userSelect: 'none',
+                color: 'whitesmoke',
+                borderRadius: '4px',
+                opacity: props.collapsed ? 0 : 100,
+                transition: 'font-size 0.2s ease-in-out',
+              }}
+            >
+              123Dprinting.no
+            </Typography.Title>
+          </Link> */}
         </Header>
       </Layout>
       <Menu
@@ -41,6 +66,12 @@ export const Sidebar: React.FC<Props> = (props) => {
         mode='inline'
         style={{ paddingTop: 24, border: 0 }}
         items={[
+          {
+            label: 'Home',
+            key: 'Home',
+            icon: <HomeOutlined />,
+            onClick: () => navigate('/'),
+          },
           {
             label: 'Users',
             key: 'Users',

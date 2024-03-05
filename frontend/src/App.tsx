@@ -27,6 +27,11 @@ export const App: React.FC = () => {
     <ConfigProvider
       theme={{
         algorithm: theme,
+        token: {
+          colorPrimary: '#ef7c3b',
+          colorInfo: '#ef7c3b',
+          borderRadius: 4,
+        },
       }}
     >
       <Layout style={{ minHeight: '100vh' }}>
