@@ -7,6 +7,7 @@ import { InternalServerErrorException } from '../exceptions/internal-server-erro
 import { UnauthorizedException } from '../exceptions/unauthorized';
 import { createJwtToken } from '../features/jwt/create-jwt';
 import { JwtPayload } from '../types/jwt-payload';
+import { withoutKey } from '../without-key';
 
 export const login: RequestHandler = async (req, res, next) => {
   try {
@@ -32,7 +33,9 @@ export const login: RequestHandler = async (req, res, next) => {
 
     const token = createJwtToken(payload);
 
-    res.json({ user, token });
+    const sdf = withoutKey(user.toObject(), 'password');
+
+    res.json({ user: sdf, token });
   } catch (error) {
     next(error);
   }

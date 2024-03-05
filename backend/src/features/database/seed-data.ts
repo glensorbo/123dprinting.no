@@ -34,7 +34,7 @@ export const seedData = async () => {
       const user = new User({
         firstName,
         lastName,
-        email: `${firstName}.${lastName}@gmail.com`,
+        email: `${firstName}.${lastName}@example.com`,
         password,
         role: 'customer',
         address: {
