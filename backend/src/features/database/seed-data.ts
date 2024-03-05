@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/nb_NO';
 
 import { config } from '../../config';
 import { User } from '../../models/user';
@@ -28,11 +28,13 @@ export const seedData = async () => {
     console.log(initPwd);
 
     for (let i = 0; i < 20; i++) {
-      const password = await hashPassword(faker.internet.password());
+      const firstName = faker.person.firstName();
+      const lastName = faker.person.lastName();
+      const password = await hashPassword(`!${firstName}.${lastName}!`);
       const user = new User({
-        firstName: faker.person.firstName(),
-        lastName: faker.person.lastName(),
-        email: faker.internet.email(),
+        firstName,
+        lastName,
+        email: `${firstName}.${lastName}@gmail.com`,
         password,
         role: 'customer',
         address: {
@@ -41,10 +43,9 @@ export const seedData = async () => {
         },
         postal: {
           code: faker.location.zipCode('####'),
-          region: faker.location.county(),
+          region: faker.location.city(),
         },
         phone: faker.helpers.fromRegExp('[0-9]{8}'),
-        orders: [],
       });
       users.push(user);
     }
