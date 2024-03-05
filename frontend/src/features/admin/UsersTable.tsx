@@ -41,11 +41,11 @@ export const UsersTable = () => {
       title: 'Actions',
       render: () => (
         <Flex gap={10}>
-          <Button type='primary' size='small'>
-            View
-          </Button>
-          <Button danger size='small'>
+          <Button danger type='link' size='small'>
             Delete
+          </Button>
+          <Button type='primary' size='small'>
+            Edit
           </Button>
         </Flex>
       ),
