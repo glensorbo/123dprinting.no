@@ -78,6 +78,12 @@ export const Sidebar: React.FC<Props> = (props) => {
             icon: <UserOutlined />,
             onClick: () => navigate('/admin/users'),
           },
+          {
+            label: 'Login',
+            key: 'Login',
+            icon: <UserOutlined />,
+            onClick: () => navigate('/login'),
+          },
         ]}
       />
     </Sider>

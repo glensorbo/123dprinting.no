@@ -1,3 +1,5 @@
+import { Typography } from 'antd';
+
 export const Login = () => {
-  return <div>Login</div>;
+  return <Typography>Login</Typography>;
 };
