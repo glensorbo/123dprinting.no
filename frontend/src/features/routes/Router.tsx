@@ -4,19 +4,14 @@ import {
   createBrowserRouter,
 } from 'react-router-dom';
 
-import { Login } from '../../components/Login';
 import { UsersTable } from '../admin/UsersTable';
-import { PageLayout } from '../layout/PageLayout';
+import { AuthProvider } from '../../config/AuthProvider';
 
 const routeConfig: RouteObject[] = [
   {
     path: '/',
-    element: <PageLayout />,
+    element: <AuthProvider />,
     children: [
-      {
-        path: 'login',
-        element: <Login />,
-      },
       {
         path: 'admin',
         children: [

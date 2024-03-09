@@ -1,11 +1,13 @@
 import { Layout } from 'antd';
-import { ToastContainer } from 'react-toastify';
-import { useStateSelector } from '../../hooks/useState';
 import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+
+import { useStateSelector } from '../../hooks/useState';
 import { useWindowDimensions } from '../../hooks/useWindowDimensions';
 import { getTheme } from '../../state/slice/theme';
+
 import { HeaderNav, Sidebar } from '../navigation';
-import { Outlet } from 'react-router-dom';
 
 const { Content } = Layout;
 
@@ -17,6 +19,7 @@ export const PageLayout = () => {
   );
 
   const chosenTheme = useStateSelector(getTheme);
+
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <ToastContainer

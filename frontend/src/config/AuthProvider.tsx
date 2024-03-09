@@ -1,21 +1,14 @@
-import { Navigate, useNavigate } from 'react-router-dom';
 import { useStateSelector } from '../hooks/useState';
+import { PageLayout } from '../features/layout/PageLayout';
+import { Login } from '../components/Login';
 
-type Props = {
-  children: React.ReactNode;
-};
-
-export const AuthProvider = ({ children }: Props) => {
+export const AuthProvider = () => {
   const { isAuthenticated } = useStateSelector((state) => state.auth);
-
-  // const navigate = useNavigate();
-
-  // if (!isAuthenticated) navigate('login');
 
   return (
     <>
-      {!isAuthenticated && <Navigate to={'login'} replace />}
-      {children}
+      {!isAuthenticated && <Login />}
+      {isAuthenticated && <PageLayout />}
     </>
   );
 };
