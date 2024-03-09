@@ -4,7 +4,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import { store } from '../state';
 import { ThemeProvider } from './AntConfigProvider';
-import { AuthProvider } from './AuthProvider';
 
 const persistor = persistStore(store);
 
@@ -16,10 +15,7 @@ export const Providers = ({ children }: Props) => {
   return (
     <ReduxProvider store={store}>
       <PersistGate persistor={persistor}>
-        <ThemeProvider>
-          {children}
-          {/* <AuthProvider>{children}</AuthProvider> */}
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </PersistGate>
     </ReduxProvider>
   );
