@@ -6,12 +6,22 @@ import {
 
 import { UsersTable } from '../admin/UsersTable';
 import { AuthProvider } from '../../config/AuthProvider';
+import { PageLayout } from '../layout/PageLayout';
+import { Login } from '../../components/Login';
 
 const routeConfig: RouteObject[] = [
   {
     path: '/',
     element: <AuthProvider />,
     children: [
+      {
+        index: true,
+        element: <PageLayout />,
+      },
+      {
+        path: 'login',
+        element: <Login />,
+      },
       {
         path: 'admin',
         children: [
