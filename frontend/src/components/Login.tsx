@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Flex, Form, Input, Layout, Typography } from 'antd';
 import { useLoginMutation } from '../state/api/auth-api';
+import { LoginRequest } from '../types/api/login-request';
 
 const Content = Layout;
 
@@ -10,11 +11,7 @@ export const Login = () => {
 
   const [login, { isLoading }] = useLoginMutation();
 
-  const submitHandler = (values: {
-    username: string;
-    password: string;
-    remember: boolean;
-  }) => {
+  const submitHandler = (values: LoginRequest) => {
     console.table(values);
   };
 
@@ -25,7 +22,7 @@ export const Login = () => {
           name='login'
           onFinish={submitHandler}
           validateTrigger={['onBlur', 'onChange']}
-          style={{ minWidth: '400px', width: '800px', padding: '1rem' }}
+          style={{ minWidth: '400px', width: '400px', padding: '1rem' }}
         >
           <Typography.Title style={{ marginBottom: '2rem' }}>
             Login
@@ -59,21 +56,15 @@ export const Login = () => {
                 }}
               />
             </Form.Item>
-            <Form.Item>
-              <Flex justify='space-between'>
-                <Form.Item name='remember' valuePropName='checked'>
-                  <Checkbox>Remember me</Checkbox>
-                </Form.Item>
-                <Button
-                  size='large'
-                  type='primary'
-                  htmlType='submit'
-                  loading={isLoading}
-                  className='login-form-button'
-                >
-                  Log in
-                </Button>
-              </Flex>
+            <Form.Item style={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <Button
+                size='large'
+                type='primary'
+                htmlType='submit'
+                loading={isLoading}
+              >
+                Log in
+              </Button>
             </Form.Item>
           </Flex>
         </Form>
