@@ -30,9 +30,7 @@ export const Login = () => {
   const submitHandler = (values: LoginRequest) => {
     login(values)
       .unwrap()
-      .then((res) =>
-        dispatch(setCredentials({ user: res.user, token: res.access_token }))
-      )
+      .then((data) => dispatch(setCredentials(data)))
       .catch(() => toast.error('Username or password are not correct.'));
   };
 

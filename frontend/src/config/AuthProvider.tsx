@@ -10,7 +10,9 @@ export const AuthProvider = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isAuthenticated && location.pathname !== '/login') navigate('/login');
+    if (!isAuthenticated && location.pathname !== '/login') {
+      navigate('/login', { replace: true });
+    }
   });
 
   return <Outlet />;

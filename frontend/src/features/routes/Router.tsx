@@ -12,24 +12,25 @@ import { Login } from '../../components/Login';
 const routeConfig: RouteObject[] = [
   {
     path: '/',
-    element: <PageLayout />,
+    element: <AuthProvider />,
     children: [
       {
         index: true,
-        element: <AuthProvider />,
-      },
-      {
-        path: 'login',
-        element: <Login />,
+        element: <PageLayout />,
       },
       {
         path: 'admin',
+        element: <PageLayout />,
         children: [
           {
             path: 'users',
             element: <UsersTable />,
           },
         ],
+      },
+      {
+        path: 'login',
+        element: <Login />,
       },
     ],
   },
