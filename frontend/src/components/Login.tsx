@@ -1,7 +1,10 @@
-import { useState } from 'react';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { LockOutlined, MailOutlined } from '@ant-design/icons';
 import { Button, Carousel, Flex, Form, Input, Layout, Typography } from 'antd';
 
+import { useStateDispatch, useStateSelector } from '../hooks/useState';
+import { setCredentials } from '../state/slice/auth';
 import { useLoginMutation } from '../state/api/auth-api';
 
 import type { LoginRequest } from '../types/api/login-request';
@@ -12,14 +15,25 @@ import image1 from '../assets/01.jfif';
 import image2 from '../assets/02.jfif';
 import image3 from '../assets/03.jfif';
 import image4 from '../assets/04.jpg';
+import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
 
+  const { isAuthenticated } = useStateSelector((state) => state.auth);
+
   const [login, { isLoading }] = useLoginMutation();
 
+  const navigate = useNavigate();
+  const dispatch = useStateDispatch();
+
   const submitHandler = (values: LoginRequest) => {
-    console.table(values);
+    login(values)
+      .unwrap()
+      .then((res) =>
+        dispatch(setCredentials({ user: res.user, token: res.access_token }))
+      )
+      .catch(() => toast.error('Username or password are not correct.'));
   };
 
   const imageStyle: React.CSSProperties = {
@@ -29,6 +43,10 @@ export const Login = () => {
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
   };
+
+  useEffect(() => {
+    if (isAuthenticated) navigate('/', { replace: true });
+  }, [isAuthenticated, navigate]);
 
   return (
     <Layout>
@@ -45,15 +63,15 @@ export const Login = () => {
             </Typography.Title>
             <Flex vertical gap={5}>
               <Form.Item
-                name='username'
-                rules={[{ required: true, message: 'Username is required!' }]}
+                name='email'
+                rules={[{ required: true, message: 'Email is required!' }]}
               >
                 <Input
                   required
                   size='large'
-                  name='username'
-                  placeholder='Username'
-                  prefix={<UserOutlined className='site-form-item-icon' />}
+                  name='email'
+                  placeholder='Email'
+                  prefix={<MailOutlined className='site-form-item-icon' />}
                 />
               </Form.Item>
               <Form.Item
